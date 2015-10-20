@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # get 'new/users' to: "users#new"
-  # get 'users' to: "posts#index"
+  get 'sessions/create'
+
+  get 'sessions/new'
+
+  get 'sessions/delete'
 
   get 'users', to: "users#new"
   get 'posts', to: "posts#new"
