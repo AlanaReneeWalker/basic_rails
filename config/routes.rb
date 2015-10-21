@@ -5,11 +5,14 @@ Rails.application.routes.draw do
 
   get 'sessions/delete'
 
+  get '/', to: "home#index"
+
   get 'users', to: "users#new"
   get 'posts', to: "posts#new"
 
   resources :users
   resources :posts
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

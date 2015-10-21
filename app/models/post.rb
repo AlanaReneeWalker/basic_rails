@@ -1,8 +1,7 @@
 class Post < ActiveRecord::Base
   
-  validates :body, presence: true
+  has_one :user
 
-  has_many :comments, dependent: :destroy
 
 end
 

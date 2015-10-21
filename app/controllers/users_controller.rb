@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   # index action
   def index
     @users = User.all
@@ -11,7 +12,8 @@ class UsersController < ApplicationController
 
   # create action
   def create
-    @user = User.create params[:User]
+    @user = User.new(user_params)
+    if@user.save
     redirect_to new_post_path
   end
 #show action
@@ -25,11 +27,11 @@ class UsersController < ApplicationController
   end
 
   # update action
-  def update
-    @user = User.find params[:id]
-    @user.update params[:user]
-    redirect_to edit_user_path
-  end
+  # def update
+  #   @user = User.find params[:id]
+  #   @user.update params[:user]
+  #   redirect_to edit_user_path
+  # end
 
   # destroy action
   def destroy
@@ -37,4 +39,17 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+end
+
+
+def create
+@user = User.new(user_params)
+if @user.save
+flash[:notice] = "Welcome to the site!"
+redirect_to new_post_path
+else
+flash[:alert] = "There was a problem creating your account. Please try again."
+redirect_to :back
+end
+end
 end
